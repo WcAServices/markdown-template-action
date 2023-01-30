@@ -40,7 +40,8 @@ steps:
 ### Result
 Once your workflow has completed, you'll receive a nice summary at the bottom of the page with your markdown template. Using the workflow above, you should end up with something like the following;
 
-[![image](https://user-images.githubusercontent.com/4034561/215385906-e03c34d9-25ef-4d92-a377-001ec6ef37c6.png)](https://github.com/WcAServices/markdown-template-action/actions/runs/4040501150/attempts/1#summary-10964953140)
+![image](https://user-images.githubusercontent.com/4034561/215387958-5987b628-08c5-4a0d-affc-3da0112de6c7.png)
+
 
 
 ## Reasoning
