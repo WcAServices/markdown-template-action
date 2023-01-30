@@ -14,16 +14,15 @@ tab in this repo.
 steps:
   - uses: WcAServices/markdown-template-action@v1
     with:
-      # These will be injected into the below template, in addtion to GitHub's standard variables.
-      # You can perform string operations here as well.
+      # These will be injected into the below template, in addition to GitHub's standard
+      # variables. You can perform string operations here as well.
       variables: >-
         GREETING="world"
         COMMIT_SHA="${{ github.sha }}"
         SHORT_SHA=${COMMIT_SHA:0:7}
         
-      # The following language=".." comment
-      # enables syntax highlighting in JetBrains IDEs
-        
+      # The following language="..." comment enables syntax highlighting in JetBrains IDEs
+      
       # language="markdown"
       template: |
          # Hello, $GREETING
