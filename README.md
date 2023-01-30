@@ -17,24 +17,25 @@ steps:
       # These will be injected into the below template, in addtion to GitHub's standard variables.
       # You can perform string operations here as well.
       variables: >-
-        GREETING="World"
+        GREETING="world"
         COMMIT_SHA="${{ github.sha }}"
+        SHORT_SHA=${COMMIT_SHA:0:7}
         
       # The following language=".." comment
       # enables syntax highlighting in JetBrains IDEs
         
       # language="markdown"
       template: |
-        # Hello, $GREETING
-        > ### You're on commit `$COMMIT_SHA`            
-          
-        ## Generally available environment variables should also work;
-        ##### Repository
-        ```yaml
-        Github Ref: $GITHUB_REF
-        Commit author: $GITHUB_ACTOR
-        Job: $GITHUB_JOB
-        ```
+         # Hello, $GREETING
+         > ### You're on commit [`$SHORT_SHA`]($COMMIT_SHA)            
+
+         ##### Standard GitHub variables should work too:
+         ```yaml
+         Github Ref: $GITHUB_REF
+         Commit author: $GITHUB_ACTOR
+         Job: $GITHUB_JOB
+         ```
+      
 ````
 
 ### Result
