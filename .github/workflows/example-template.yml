@@ -19,7 +19,7 @@ jobs:
           # language="markdown"
           template: |
             # Hello, $GREETING
-            > ### You're on commit [`${COMMIT_SHA:0:7}`]($COMMIT_SHA)            
+            > ### You're on commit [`$SHORT_SHA`]($COMMIT_SHA)            
               
             ## Generally available environment variables should also work;
             ##### Repository
