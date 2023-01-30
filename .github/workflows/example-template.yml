@@ -14,11 +14,12 @@ jobs:
           variables: >-
             GREETING="World"
             COMMIT_SHA="${{ github.sha }}"
+            SHORT_SHA=${COMMIT_SHA:0:7}
 
           # language="markdown"
           template: |
             # Hello, $GREETING
-            > ### You're on commit `$COMMIT_SHA`            
+            > ### You're on commit [`${COMMIT_SHA:0:7}`]($COMMIT_SHA)            
               
             ## Generally available environment variables should also work;
             ##### Repository
