@@ -3,7 +3,33 @@ on:
   push:
 
 jobs:
+  with-variables:
+    name: 'Template with dynamic data'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 'Template without variables'
+        uses: wcaservices/markdown-template/action@master
+        with:
+          # language="bashpro shell script"
+          variables: >-
+            GREETING="World"
+            COMMIT_SHA="${{ github.sha }}"
+
+          # language="markdown"
+          template: |
+            # Hello, $GREETING
+            > ### You're on commit `$COMMIT_SHA`            
+              
+            ## Generally available environment variables should also work;
+            ##### Repository
+            ```yaml
+            Github Ref: $GITHUB_REF
+            Commit author: $GITHUB_ACTOR
+            Job: $GITHUB_JOB
+            ```
+              
   without-variables:
+    name: 'Static template'
     runs-on: ubuntu-22.04
     steps:
       - name: 'Template without variables'
