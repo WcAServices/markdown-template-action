@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: 'Template without variables'
-        uses: WcAServices/markdown-template-action@master
+        uses: WcAServices/markdown-template-action@main
         with:
           # language="bashpro shell script"
           variables: >-
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: 'Template without variables'
-        uses: WcAServices/markdown-template-action@master
+        uses: WcAServices/markdown-template-action@main
         with:
           # language="markdown"
           template: |
