@@ -21,8 +21,7 @@ jobs:
             # Hello, $GREETING
             > ### You're on commit [`$SHORT_SHA`]($COMMIT_SHA)            
               
-            ## Generally available environment variables should also work;
-            ##### Repository
+            ##### Standard GitHub variables should work too:
             ```yaml
             Github Ref: $GITHUB_REF
             Commit author: $GITHUB_ACTOR
