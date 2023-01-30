@@ -1,17 +1,24 @@
 # Markdown Template Action
 > Quickly build inline markdown step summaries for your workflows.
-> - Supports environment variable injection
->    ```yaml
+> - Supports environment variable injection ✅
+>    ````yaml
 >       template: |
 >         # Tests are failing!
->         > Go blame $GITHUB_ACTOR who pushed to $GITHUB_BASE_REF 
->    ```
-> - A great alternative to the following templating workflow
+>         > Go blame $GITHUB_ACTOR who pushed to $GITHUB_BASE_REF
+>    
+>         ## Test Report
+>         ```
+>           $TEST_SUMMARY_RESULTS
+>         ```
+>    ````
+> - A great alternative to the following templating workflow; 👎
 >    ````bash
->    echo "# Tests are failing"    >> $GITHUB_STEP_SUMMARY
->    echo '```'                    >> $GITHUB_STEP_SUMMARY
->    echo "$TEST_SUMMARY_RESULTS"  >> $GITHUB_STEP_SUMMARY
->    echo '```'                    >> $GITHUB_STEP_SUMMARY
+>    echo "# Tests are failing"                                         >> $GITHUB_STEP_SUMMARY
+>    echo "> Go blame $GITHUB_ACTOR who pushed to $GITHUB_BASE_REF"     >> $GITHUB_STEP_SUMMARY
+>    echo ""                                                            >> $GITHUB_STEP_SUMMARY
+>    echo '```'                                                         >> $GITHUB_STEP_SUMMARY
+>    echo "$TEST_SUMMARY_RESULTS"                                       >> $GITHUB_STEP_SUMMARY
+>    echo '```'                                                         >> $GITHUB_STEP_SUMMARY
 >    ````
 
 ## Using the action
