@@ -29,7 +29,7 @@ tab in this repo.
 ````yaml
 steps:
   - name: 'Template without variables'
-    uses: WcAServices/markdown-template-action@main
+    uses: WcAServices/markdown-template-action@v1
     with:
       # These will be injected into the below template.
       variables: >-
