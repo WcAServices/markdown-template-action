@@ -1,0 +1,34 @@
+name: 'Markdown Summary Template'
+description: 'Add custom step summaries to your workflows with ease. No more 200 lines of "echo ... >> $GITHUB_STEP_SUMMARY"'
+inputs:
+  template:
+    required: true
+    description: | 
+      Your markdown template. Write as if it was normal markdown.
+      For JetBrains users, add `# language="markdown"` to the line above to get nice syntax highlighting.
+  variables:
+    required: false
+    description: |
+      A list of environment variables to inject into your markdown template.
+      For example;
+        ...
+        variables: >-
+          FOO="bar"
+          SOMEONE="world"
+        template: |
+          # Hello, $SOMEONE
+          This is $FOO
+      
+
+runs:
+  using: "composite"
+  steps:
+    - name: 'Build template'
+      shell: bash
+      env:
+        TEMPLATE: ${{ inputs.template }}
+      # language="bashpro shell script"
+      run: |
+        parsed_template="$(echo "$TEMPLATE" | ${{ inputs.variables }} envsubst)"
+        
+        echo "$parsed_template" >> $GITHUB_STEP_SUMMARY
