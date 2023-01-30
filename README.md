@@ -39,13 +39,16 @@ steps:
 
 ### Result
 Once your workflow has completed, you'll receive a nice summary at the bottom of the page with your markdown template. Using the workflow above, you should end up with something like the following;
+
 [![image](https://user-images.githubusercontent.com/4034561/215385906-e03c34d9-25ef-4d92-a377-001ec6ef37c6.png)](https://github.com/WcAServices/markdown-template-action/actions/runs/4040501150/attempts/1#summary-10964953140)
 
 
 ## Reasoning
 When building step summaries, you tend to get stuck with GitHub's suggested apporoach where you simply echo into the step summary variable.
 This can quickly get very verbose when you get into slightly more advanced markdown formatting:
+
 > - A great alternative to the following templating workflow; 👎
+> 
 >    ````bash
 >    echo "# Tests are failing"                                         >> $GITHUB_STEP_SUMMARY
 >    echo "> Go blame $GITHUB_ACTOR who pushed to $GITHUB_BASE_REF"     >> $GITHUB_STEP_SUMMARY
