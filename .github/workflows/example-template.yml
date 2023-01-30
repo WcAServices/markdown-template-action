@@ -1,0 +1,15 @@
+name: 'Example summaries'
+on:
+  push:
+
+jobs:
+  without-variables:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 'Template without variables'
+        uses: wcaservices/markdown-template/action@master
+        with:
+          # language="markdown"
+          template: |
+            # Without variables
+            > Just a standard Markdown template with nothing fancy going on.
