@@ -16,7 +16,9 @@
 
 ## Using the action
 The following is an extract from our [`example-template.yml`](.github/workflows/example-template.yml) workflow.
-You can see it in action by going to the "[`Actions`](/WcAServices/markdown-template-action/actions/workflows/example-template.yml)" tab in this repo.
+You can see it in action by going to the 
+"[`Actions`](https://github.com/WcAServices/markdown-template-action/actions/workflows/example-template.yml)"
+tab in this repo.
 ````yaml
 steps:
   - name: 'Template without variables'
