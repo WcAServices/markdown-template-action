@@ -6,6 +6,11 @@ inputs:
     description: | 
       Your markdown template. Write as if it was normal markdown.
       For JetBrains users, add `# language="markdown"` to the line above to get nice syntax highlighting.
+  step-output-only:
+    default: 'false'
+    description: |
+      Whether to only emit the template to GitHub step output instead of adding it directly to the step summary
+      Useful if you want to feed the template into some other workflow step.
   variables:
     required: false
     description: |
@@ -18,17 +23,40 @@ inputs:
         template: |
           # Hello, $SOMEONE
           This is $FOO
-      
+outputs:
+  parsed:
+    value: ${{ steps.template.parsed }}
+    description: |
+      Parsed output of your template.
+      Useful if you want to feed the template into some other workflow step.
 
 runs:
   using: "composite"
   steps:
     - name: 'Build template'
+      id: template
       shell: bash
       env:
         TEMPLATE: ${{ inputs.template }}
+        STEP_OUTPUT_ONLY: ${{ inputs.step-output-only }}
       # language="bashpro shell script"
       run: |
         parsed_template="$(echo "$TEMPLATE" | ${{ inputs.variables }} envsubst)"
         
-        echo "$parsed_template" >> $GITHUB_STEP_SUMMARY
+        emitToOutput() {
+            local key="$1"
+            local value="$2"
+            local EOF="EOF-$key-$RANDOM"
+          
+            # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+            echo "$key<<$EOF"   >> $GITHUB_OUTPUT
+            echo "$value"       >> $GITHUB_OUTPUT
+            echo "$EOF"         >> $GITHUB_OUTPUT
+          }
+        
+        if [[ "$STEP_OUTPUT_ONLY" != "true"  ]]; then
+          echo "$parsed_template" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        emitToOutput parsed "$parsed_template"
+        
