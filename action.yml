@@ -1,5 +1,8 @@
 name: 'Markdown Summary Template'
 description: 'Add custom step summaries to your workflows with ease. No more 200 lines of "echo ... >> $GITHUB_STEP_SUMMARY"'
+branding:
+  icon: align-center
+  color: gray-dark
 inputs:
   template:
     required: true
