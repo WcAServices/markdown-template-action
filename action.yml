@@ -30,6 +30,15 @@ outputs:
       Parsed output of your template.
       Useful if you want to feed the template into some other workflow step.
 
+  input:
+    value: ${{ steps.template.input }}
+    description: |
+      Your raw template before it was parsed.
+
+  variables:
+    value: ${{ steps.template.variables }}
+    description: |
+      The input variables you provided to build the template. Handy if you need to re-use them somewhere else.
 runs:
   using: "composite"
   steps:
@@ -59,4 +68,6 @@ runs:
         fi
         
         emitToOutput parsed "$parsed_template"
+        emitToOutput input "$TEMPLATE"
+        emitToOutput variables "${{ inputs.variables }}"
         
