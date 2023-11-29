@@ -28,18 +28,18 @@ inputs:
           This is $FOO
 outputs:
   parsed:
-    value: ${{ steps.template.parsed }}
+    value: ${{ steps.template.outputs.parsed }}
     description: |
       Parsed output of your template.
       Useful if you want to feed the template into some other workflow step.
 
   input:
-    value: ${{ steps.template.input }}
+    value: ${{ steps.template.outputs.input }}
     description: |
       Your raw template before it was parsed.
 
   variables:
-    value: ${{ steps.template.variables }}
+    value: ${{ steps.template.outputs.variables }}
     description: |
       The input variables you provided to build the template. Handy if you need to re-use them somewhere else.
 runs:
