@@ -67,10 +67,10 @@ runs:
           }
         
         if [[ "$STEP_OUTPUT_ONLY" != "true"  ]]; then
-          echo "$parsed_template" >> $GITHUB_STEP_SUMMARY
+          echo "$parsed_template" >> $GITHUB_STEP_SUMMARY || exit 1
         fi
         
-        emitToOutput parsed "$parsed_template"
-        emitToOutput input "$TEMPLATE"
-        emitToOutput variables "${{ inputs.variables }}"
+        emitToOutput parsed "$parsed_template"            || exit 1
+        emitToOutput input "$TEMPLATE"                    || exit 1
+        emitToOutput variables "${{ inputs.variables }}"  || exit 1
         
